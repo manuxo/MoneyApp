@@ -35,7 +35,7 @@ public class DetalleGastoService implements IDetalleGastoService{
 	@Transactional
 	public void save(DetalleGasto entity) {
 		// TODO Auto-generated method stub
-		detalleGastoRepo.save(entity)
+		detalleGastoRepo.save(entity);
 	}
 
 	@Override
