@@ -1,4 +1,4 @@
-package pe.edu.upc.entities;
+package pe.edu.upc.model.entities;
 
 import java.io.Serializable;
 import java.util.List;

@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 @SpringBootApplication
-@EntityScan(basePackages = {"pe.edu.upc.entities"})
+@EntityScan(basePackages = {"pe.edu.upc.model.entities"})
 public class MoneyAppApplication {
 
 	public static void main(String[] args) {

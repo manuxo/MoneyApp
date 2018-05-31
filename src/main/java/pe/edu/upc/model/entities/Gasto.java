@@ -1,7 +1,9 @@
-package pe.edu.upc.entities;
+package pe.edu.upc.model.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,12 +11,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 @Entity
-@Table(name="detalle_gasto")
-public class DetalleGasto implements Serializable{
+@Table(name="gasto")
+public class Gasto implements Serializable{
 
 	/**
 	 * 
@@ -26,20 +32,25 @@ public class DetalleGasto implements Serializable{
 	private Long id;
 	
 	@NotNull
-	private String descripcion;
-	
-	@Column(name="costo_previsto",nullable=false)
+	@Column(name="costo_previsto")
 	private double costoPrevisto;
 	
-	@Column(name="costo_real",nullable=false)
+	@NotNull
+	@Column(name="costo_real")
 	private double costoReal;
 	
 	@NotNull
 	private double diferencia;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
-	private Gasto gasto;
+	private Categoria categoria;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	private PresupuestoMensual presupuesto;
 
+	@OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL,mappedBy="gasto")
+	@Fetch(value=FetchMode.SUBSELECT)
+	private List<DetalleGasto> detalles;
 	
 	//TODO: getters-setters
 	
@@ -49,14 +60,6 @@ public class DetalleGasto implements Serializable{
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public String getDescripcion() {
-		return descripcion;
-	}
-
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
 	}
 
 	public double getCostoPrevisto() {
@@ -83,12 +86,21 @@ public class DetalleGasto implements Serializable{
 		this.diferencia = diferencia;
 	}
 
-	public Gasto getGasto() {
-		return gasto;
+	public Categoria getCategoria() {
+		return categoria;
 	}
 
-	public void setGasto(Gasto gasto) {
-		this.gasto = gasto;
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
 	}
+
+	public PresupuestoMensual getPresupuesto() {
+		return presupuesto;
+	}
+
+	public void setPresupuesto(PresupuestoMensual presupuesto) {
+		this.presupuesto = presupuesto;
+	}
+	
 	
 }//:~
