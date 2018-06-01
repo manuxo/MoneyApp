@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import pe.edu.upc.model.dao.IDetalleGastoDAO;
 import pe.edu.upc.model.entities.DetalleGasto;
 import pe.edu.upc.service.IDetalleGastoService;
+import pe.edu.upc.util.CostosBuilder;
 
 @Service
 public class DetalleGastoService implements IDetalleGastoService{
@@ -35,6 +36,8 @@ public class DetalleGastoService implements IDetalleGastoService{
 	@Transactional
 	public void save(DetalleGasto entity) {
 		// TODO Auto-generated method stub
+		entity.setDiferencia(entity.getCostoPrevisto() - entity.getCostoReal());
+		CostosBuilder.sumarizarGasto(entity);
 		detalleGastoRepo.save(entity);
 	}
 
@@ -50,6 +53,12 @@ public class DetalleGastoService implements IDetalleGastoService{
 	public void delete(DetalleGasto entity) {
 		// TODO Auto-generated method stub
 		detalleGastoRepo.delete(entity);
+	}
+
+	@Override
+	public List<DetalleGasto> findByIdGasto(Long id) {
+		// TODO Auto-generated method stub
+		return detalleGastoRepo.findByIdGasto(id);
 	}
 
 	

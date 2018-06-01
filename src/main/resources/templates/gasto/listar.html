@@ -34,20 +34,7 @@
 									  <p><b>Costo real:</b> S/. <span th:text="${gasto.costoReal}"></span></p>
 									  <p><b>Diferencia:</b><span class="negativo">S/. <span th:text="${gasto.diferencia}"></span></span> </p>
 									  <br>
-									  <table class="table">
-									    <thead>
-									      <tr class="warning">
-									        <th>Descripcion</th>
-									        <th>Costo previsto</th>
-									        <th>Costo real</th>
-									        <th>Diferencia</th>
-									      </tr>
-									    </thead>
-									    <tbody>
-									      
-									    </tbody>
-									  </table>
-									  <a class="btn btn-warning" th:href="@{/detallegasto/nuevo/} + ${gasto.id}">Nuevo detalle</a>
+									  <a class="btn btn-warning" th:href="@{/detallegasto/listar/} + ${gasto.id}">Detalles</a>
 									  <a class="btn btn-danger" th:href="@{/}">Eliminar Gasto</a>
 									</div>
 							  </div>

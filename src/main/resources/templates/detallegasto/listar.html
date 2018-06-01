@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body>
+
+	<div th:replace="layout/layout :: jumbotron"></div>
+	<nav th:replace="layout/layout :: nav"></nav>
+	<div class="container py-4 contenido-pagina">
+		<div class="row contenedor">
+			<div class="col-sm-12">
+				
+				
+				<div class="panel panel-warning">
+					<div class="panel-heading" th:text="'Gasto por ' + ${gasto.categoria.nombre}"></div>
+						<div class="panel-body">
+							<p><b>Categoria:</b> <span th:text="${gasto.categoria.nombre}"></span></p>
+							<p><b>Costo previsto:</b> S/. <span th:text="${gasto.costoPrevisto}"></span></p>
+							<p><b>Costo real:</b> S/. <span th:text="${gasto.costoReal}"></span></p>
+							<p><b>Diferencia:</b><span class="negativo">S/. <span th:text="${gasto.diferencia}"></span></span> </p>
+							<br>
+							<table class="table">
+								<thead>
+									<tr class="warning">
+									    <th>Descripcion</th>
+									    <th>Costo previsto</th>
+										<th>Costo real</th>
+									    <th>Diferencia</th>
+									</tr>
+								</thead>
+								<tbody>
+								    <tr th:each="detalleGasto:${detalles}">
+									      	<td><span th:text="${detalleGasto.descripcion}"></span></td>
+									      	<td>S/. <span th:text="${detalleGasto.costoPrevisto}"></span></td>
+									      	<td>S/. <span th:text="${detalleGasto.costoReal}"></span></td>
+									      	<td>S/. <span th:text="${detalleGasto.diferencia}"></span></td>
+									</tr>
+								</tbody>
+							</table>
+							<a class="btn btn-warning" th:href="@{/detallegasto/nuevo/} + ${gasto.id}">Nuevo detalle</a>
+							 <a class="btn btn-danger" th:href="@{/}">Eliminar Gasto</a>
+						</div>
+				</div>
+			</div>
+						  
+						  
+		</div>	
+		<br>
+	</div>
+	   
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

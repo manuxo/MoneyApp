@@ -9,12 +9,14 @@
 		<div class="row contenedor">
 			<div class="col-sm-12">
 				<h2>Nuevo Gasto</h2>
-				<form th:action="@{/gasto/nuevo/} + ${idPresupuesto}" th:object="${gastoViewModel}" method="post">
+				<form th:action="@{/detallegasto/nuevo/} + ${idGasto}" th:object="${detalleGasto}" method="post">
 				  <div class="form-group">
-				  	<label for="categoria">Categoria: </label>
-				  	<select class="form-control" th:field="*{categoria}" id="categoria">
-					  <option th:each="categoria:${categorias}" th:value="${categoria.id}" th:text="${categoria.nombre}"></option>
-					</select>
+				  	<label for="descripcion">Descripcion: </label>
+				  	<input type="text" class="form-control" id="descripcion" th:field="*{descripcion}">
+					<label for="costoprevisto">Costo previsto: </label>
+					<input type="number" class="form-control" id="costoprevisto" th:field="*{costoPrevisto}">
+					<label for="costoreal">Costo previsto: </label>
+					<input type="number" class="form-control" id="costoreal" th:field="*{costoReal}">
 				  </div>
 				  <button type="submit" class="btn btn-warning">Registrar</button>
 				</form>
