@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body>
+
+	<div th:replace="layout/layout :: jumbotron"></div>
+	<nav th:replace="layout/layout :: nav"></nav>
+	<div class="container py-4 contenido-pagina">
+		<div class="row contenedor">
+			<div class="col-sm-12">
+				<h2>Lista de Gastos</h2>
+				
+				<div class="panel panel-warning" th:each="gasto:${gastos}">
+						<div class="panel-heading" th:text="'Gasto #' + ${gasto.id}"></div>
+						  <div class="panel-body">
+						  <p><b>Categoria:</b> <span th:text="${gasto.categoria}"></span></p>
+						  <p><b>Presupuesto:</b> <span th:text="'Presupuesto de ' + ${gasto.presupuesto.persona.nombres}+ ' ' +
+						  ${gasto.presupuesto.persona.apellidos} + ' - ' + ${gasto.presupuesto.anio} + ' ' + ${gasto.presupuesto.mes}">
+						  </span></p>
+						  <p><b>Costo previsto:</b> S/. <span th:text="${gasto.costoPrevisto}"></span></p>
+						  <p><b>Costo real:</b> S/. <span th:text="${gasto.costoReal}"></span></p>
+						  <p><b>Diferencia:</b><span class="negativo">S/. <span th:text="${gasto.diferencia}"></span></span> </p>
+						  <br>
+						  <a class="btn btn-warning" th:href="@{/gasto/listar/} + ${presupuesto.id}">Nuevo detalle</a>
+						  <a class="btn btn-default" th:href="@{/}">Editar</a>
+						  <a class="btn btn-danger" th:href="@{/}">Eliminar</a>
+						</div>
+				</div>
+				<a class="btn btn-warning" th:href="@{/presupuesto/nuevo}">Nuevo</a>
+				<br>
+			</div>
+	    </div>
+	</div>
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

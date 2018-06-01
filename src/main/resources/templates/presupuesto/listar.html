@@ -22,6 +22,10 @@
 						  <p><b>Costo real:</b> S/. <span th:text="${presupuesto.costoRealTotal}"></span></p>
 						  <p><b>Diferencia:</b><span class="positivo">S/. <span th:text="${presupuesto.diferenciaTotal}"></span></span> </p>
 						  <p><b>Persona:</b> <span th:text="${presupuesto.persona.nombres}"></span></p>
+						  <br>
+						  <a class="btn btn-warning" th:href="@{/gasto/listar/} + ${presupuesto.id}">Agregar gastos</a>
+						  <a class="btn btn-default" th:href="@{/}">Editar</a>
+						  <a class="btn btn-danger" th:href="@{/}">Eliminar</a>
 						</div>
 				</div>
 				<a class="btn btn-warning" th:href="@{/presupuesto/nuevo}">Nuevo</a>
