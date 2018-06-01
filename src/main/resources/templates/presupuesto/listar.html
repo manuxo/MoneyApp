@@ -9,7 +9,9 @@
 		<div class="row contenedor">
 			<div class="col-sm-12">
 				<h2>Lista de Presupuestos</h2>
-				
+				<br><br>
+				<a class="btn btn-warning" th:href="@{/presupuesto/nuevo}">Nuevo Presupuesto</a>
+				<br><br>
 				<div class="panel panel-warning" th:each="presupuesto:${presupuestos}">
 						<div class="panel-heading" th:text="'Presupuesto #' + ${presupuesto.id}"></div>
 						  <div class="panel-body">
@@ -23,12 +25,11 @@
 						  <p><b>Diferencia:</b><span class="positivo">S/. <span th:text="${presupuesto.diferenciaTotal}"></span></span> </p>
 						  <p><b>Persona:</b> <span th:text="${presupuesto.persona.nombres} + ' ' + ${presupuesto.persona.apellidos}"></span></p>
 						  <br>
-						  <a class="btn btn-warning" th:href="@{/gasto/listar/} + ${presupuesto.id}">Agregar gastos</a>
-						  <a class="btn btn-default" th:href="@{/}">Editar</a>
+						  <a class="btn btn-warning" th:href="@{/gasto/listar/} + ${presupuesto.id}">Gastos</a>
 						  <a class="btn btn-danger" th:href="@{/}">Eliminar</a>
 						</div>
 				</div>
-				<a class="btn btn-warning" th:href="@{/presupuesto/nuevo}">Nuevo</a>
+				
 				<br>
 			</div>
 	    </div>

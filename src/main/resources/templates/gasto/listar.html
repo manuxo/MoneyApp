@@ -21,9 +21,11 @@
 						  <p><b>Costo real:</b> S/. <span th:text="${presupuesto.costoRealTotal}"></span></p>
 						  <p><b>Diferencia:</b><span class="positivo">S/. <span th:text="${presupuesto.diferenciaTotal}"></span></span> </p>
 						  <p><b>Persona:</b> <span th:text="${presupuesto.persona.nombres} + ' ' + ${presupuesto.persona.apellidos}"></span></p>
-						  <br>
 						  </div>
 						  <div class="contenedor">
+						  	  <br>
+						  	  <a class="btn btn-warning" th:href="@{/gasto/nuevo/} + ${presupuesto.id}">Nuevo Gasto</a>	
+						  	  <br><br>
 							  <div class="panel panel-warning" th:each="gasto:${gastos}">
 									<div class="panel-heading" th:text="'Gasto por ' + ${gasto.categoria.nombre}"></div>
 									  <div class="panel-body">
@@ -32,14 +34,26 @@
 									  <p><b>Costo real:</b> S/. <span th:text="${gasto.costoReal}"></span></p>
 									  <p><b>Diferencia:</b><span class="negativo">S/. <span th:text="${gasto.diferencia}"></span></span> </p>
 									  <br>
-									  <a class="btn btn-warning" th:href="@{/gasto/listar/} + ${presupuesto.id}">Nuevo detalle</a>
-									  <a class="btn btn-default" th:href="@{/}">Editar</a>
-									  <a class="btn btn-danger" th:href="@{/}">Eliminar</a>
+									  <table class="table">
+									    <thead>
+									      <tr class="warning">
+									        <th>Descripcion</th>
+									        <th>Costo previsto</th>
+									        <th>Costo real</th>
+									        <th>Diferencia</th>
+									      </tr>
+									    </thead>
+									    <tbody>
+									      
+									    </tbody>
+									  </table>
+									  <a class="btn btn-warning" th:href="@{/detallegasto/nuevo/} + ${gasto.id}">Nuevo detalle</a>
+									  <a class="btn btn-danger" th:href="@{/}">Eliminar Gasto</a>
 									</div>
 							  </div>
 						  </div>
 						  
-						  <a class="btn btn-warning" th:href="@{/gasto/nuevo/} + ${presupuesto.id}">Nuevo Gasto</a>
+						  
 				</div>
 			
 				
