@@ -9,34 +9,23 @@
 		<div class="row contenedor">
 			<div class="col-sm-12">
 				<h2>Lista de Presupuestos</h2>
-				<div class="panel panel-warning">
-				  <div class="panel-heading">Presupuesto #1</div>
-				  <div class="panel-body">
-				  <p><b>Año:</b> 2018</p>
-				  <p><b>Mes:</b> Enero</p>
-				  <p><b>Ingresos:</b> <span class="positivo">S/. 4500.0</span></p>
-				  <p><b>Saldo previsto:</b> S/. 1550.0</p>
-				  <p><b>Saldo real:</b> S/. 1024.0</p>
-				  <p><b>Costo previsto:</b> S/. 2950.0</p>
-				  <p><b>Costo real:</b> S/. 2426.0</p>
-				  <p><b>Diferencia:</b><span class="negativo">S/. 524.0</span> </p>
-				  <p><b>Persona:</b> Manuel Alvarado Estanga</p>
-				  </div>
-				</div>
+				
 				<div class="panel panel-warning" th:each="presupuesto:${presupuestos}">
-						<div class="panel-heading" th:text="'Presupuesto #' + presupuesto.id"></div>
+						<div class="panel-heading" th:text="'Presupuesto #' + ${presupuesto.id}"></div>
 						  <div class="panel-body">
 						  <p><b>Año:</b> <span th:text="${presupuesto.anio}"></span></p>
 						  <p><b>Mes:</b> <span th:text="${presupuesto.mes}"></span></p>
-						  <p><b>Ingresos:</b> <span class="positivo">S/. <span class="positivo" th:text="${presupuesto.ingresos}"></span></span></p>
+						  <p><b>Ingresos:</b> <span class="positivo">S/. <span th:text="${presupuesto.ingresos}"></span></span></p>
 						  <p><b>Saldo previsto:</b> S/. <span th:text="${presupuesto.saldoPrevisto}"></span></p>
 						  <p><b>Saldo real:</b> S/. <span th:text="${presupuesto.saldoReal}"></span></p>
-						  <p><b>Costo previsto:</b> S/. <span th:text="${presupuesto.costoPrevisto}"></span></p>
-						  <p><b>Costo real:</b> S/. <span th:text="${presupuesto.costoReal}"></span></p>
-						  <p><b>Diferencia:</b><span class="negativo">S/. <span class="positivo" th:text="${presupuesto.diferencia}"></span></span> </p>
+						  <p><b>Costo previsto:</b> S/. <span th:text="${presupuesto.costoPrevistoTotal}"></span></p>
+						  <p><b>Costo real:</b> S/. <span th:text="${presupuesto.costoRealTotal}"></span></p>
+						  <p><b>Diferencia:</b><span class="positivo">S/. <span th:text="${presupuesto.diferenciaTotal}"></span></span> </p>
 						  <p><b>Persona:</b> <span th:text="${presupuesto.persona.nombres}"></span></p>
 						</div>
 				</div>
+				<a class="btn btn-warning" th:href="@{/presupuesto/nuevo}">Nuevo</a>
+				<br>
 			</div>
 	    </div>
 	</div>

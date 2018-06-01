@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body>
+
+	<div th:replace="layout/layout :: jumbotron"></div>
+	<nav th:replace="layout/layout :: nav"></nav>
+	<div class="container py-4 contenido-pagina">
+		<div class="row contenedor">
+			<div class="col-sm-12">
+				<h2>Nuevo Presupuesto</h2>
+				<form th:action="@{/presupuesto/nuevo}" th:object="${presupuestoViewModel}" method="post">
+				  <div class="form-group">
+				    <label for="persona">Seleccione la persona:</label>
+				    <select class="form-control" th:field="*{persona}" id="persona">
+					  <option th:each="persona:${personas}" th:value="${persona.id}" th:text="${persona.nombres} + ' ' + ${persona.apellidos}"></option>
+					</select>
+				  </div>
+				  <div class="form-group">
+				  	<label for="anio">Año: </label>
+				  	<input type="number" class="form-control" id="anio" th:field="*{presupuesto.anio}" min="1997" max="2999">
+				  	<label for="mes">Mes: </label>
+				  	<select class="form-control" th:field="*{presupuesto.mes}" id="mes">
+					  <option th:each="mes:${meses}" th:value="${mes}" th:text="${mes}"></option>
+					</select>
+				    <label for="ingresos">Ingresos:</label>
+				    <input type="number" class="form-control" id="ingresos" th:field="*{presupuesto.ingresos}">
+				  </div>
+				  <button type="submit" class="btn btn-warning">Registrar</button>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

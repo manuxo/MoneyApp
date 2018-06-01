@@ -55,7 +55,7 @@ public class PresupuestoMensual implements Serializable{
 	@Column(name="diferencia_total",nullable=false)
 	private double diferenciaTotal;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	private Persona persona;
 
 	@OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL,mappedBy="presupuesto")

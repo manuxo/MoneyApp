@@ -1,5 +1,6 @@
 .contenido-pagina{
-	height: 800px!important;
+	min-height: 800px!important;
+	padding-bottom: 100px;
 }
 
 .contenedor{
@@ -26,8 +27,8 @@ span.negativo{
 }
 
 footer {
-    position: fixed;
+	position: fixed;
+	bottom:0;
     height: 75px;
-    bottom: 0;
     width: 100%;
 }

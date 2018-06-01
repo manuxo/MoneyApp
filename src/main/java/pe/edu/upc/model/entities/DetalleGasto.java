@@ -37,7 +37,7 @@ public class DetalleGasto implements Serializable{
 	@NotNull
 	private double diferencia;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	private Gasto gasto;
 
 	
