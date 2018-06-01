@@ -22,11 +22,18 @@
 						  <p><b>Saldo real:</b> S/. <span th:text="${presupuesto.saldoReal}"></span></p>
 						  <p><b>Costo previsto:</b> S/. <span th:text="${presupuesto.costoPrevistoTotal}"></span></p>
 						  <p><b>Costo real:</b> S/. <span th:text="${presupuesto.costoRealTotal}"></span></p>
-						  <p><b>Diferencia:</b><span class="positivo">S/. <span th:text="${presupuesto.diferenciaTotal}"></span></span> </p>
+						  
+						  <p th:if="${presupuesto.diferenciaTotal} lt 0">
+						  <b>Estas perdiendo: </b>
+						  <span class="negativo">S/. <span th:text="${presupuesto.diferenciaTotal}"></span></span> </p>
+						  <p th:if="${presupuesto.diferenciaTotal} gt -1">
+						  <b>Estas ahorrando: </b>
+						  <span class="positivo">S/. <span th:text="${presupuesto.diferenciaTotal}"></span></span> </p>
+						  
+						  
 						  <p><b>Persona:</b> <span th:text="${presupuesto.persona.nombres} + ' ' + ${presupuesto.persona.apellidos}"></span></p>
 						  <br>
 						  <a class="btn btn-warning" th:href="@{/gasto/listar/} + ${presupuesto.id}">Gastos</a>
-						  <a class="btn btn-danger" th:href="@{/}">Eliminar</a>
 						</div>
 				</div>
 				

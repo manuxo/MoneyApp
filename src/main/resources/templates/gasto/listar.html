@@ -19,12 +19,22 @@
 						  <p><b>Saldo real:</b> S/. <span th:text="${presupuesto.saldoReal}"></span></p>
 						  <p><b>Costo previsto:</b> S/. <span th:text="${presupuesto.costoPrevistoTotal}"></span></p>
 						  <p><b>Costo real:</b> S/. <span th:text="${presupuesto.costoRealTotal}"></span></p>
-						  <p><b>Diferencia:</b><span class="positivo">S/. <span th:text="${presupuesto.diferenciaTotal}"></span></span> </p>
+						  
+						  <p th:if="${presupuesto.diferenciaTotal} lt 0">
+						  <b>Estas perdiendo: </b>
+						  <span class="negativo">S/. <span th:text="${presupuesto.diferenciaTotal}"></span></span> </p>
+						  <p th:if="${presupuesto.diferenciaTotal} gt -1">
+						  <b>Estas ahorrando: </b>
+						  <span class="positivo">S/. <span th:text="${presupuesto.diferenciaTotal}"></span></span> </p>
+						  
+						  
+						  
 						  <p><b>Persona:</b> <span th:text="${presupuesto.persona.nombres} + ' ' + ${presupuesto.persona.apellidos}"></span></p>
 						  </div>
 						  <div class="contenedor">
 						  	  <br>
-						  	  <a class="btn btn-warning" th:href="@{/gasto/nuevo/} + ${presupuesto.id}">Nuevo Gasto</a>	
+						  	  <a class="btn btn-warning" th:href="@{/gasto/nuevo/} + ${presupuesto.id}">Nuevo Gasto</a>
+						  	  <a class="btn btn-default" href="javascript:history.back()">Volver</a>
 						  	  <br><br>
 							  <div class="panel panel-warning" th:each="gasto:${gastos}">
 									<div class="panel-heading" th:text="'Gasto por ' + ${gasto.categoria.nombre}"></div>
@@ -32,10 +42,16 @@
 									  <p><b>Categoria:</b> <span th:text="${gasto.categoria.nombre}"></span></p>
 									  <p><b>Costo previsto:</b> S/. <span th:text="${gasto.costoPrevisto}"></span></p>
 									  <p><b>Costo real:</b> S/. <span th:text="${gasto.costoReal}"></span></p>
-									  <p><b>Diferencia:</b><span class="negativo">S/. <span th:text="${gasto.diferencia}"></span></span> </p>
+									  
+									  <p th:if="${gasto.diferencia} lt 0">
+									  <b>Estas perdiendo: </b>
+									  <span class="negativo">S/. <span th:text="${gasto.diferencia}"></span></span> </p>
+									  <p th:if="${gasto.diferencia} gt -1">
+									  <b>Estas ahorrando: </b>
+									  <span class="positivo">S/. <span th:text="${gasto.diferencia}"></span></span> </p>
+									  
 									  <br>
 									  <a class="btn btn-warning" th:href="@{/detallegasto/listar/} + ${gasto.id}">Detalles</a>
-									  <a class="btn btn-danger" th:href="@{/}">Eliminar Gasto</a>
 									</div>
 							  </div>
 						  </div>
