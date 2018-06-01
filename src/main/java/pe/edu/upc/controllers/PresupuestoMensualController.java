@@ -45,6 +45,11 @@ public class PresupuestoMensualController {
 		
 		PresupuestoMensual presupuesto = presupuestoViewModel.getPresupuesto();
 		presupuesto.setPersona(presupuestoViewModel.getPersona());
+		presupuesto.setCostoPrevistoTotal(0);
+		presupuesto.setCostoRealTotal(0);
+		presupuesto.setDiferenciaTotal(0);
+		presupuesto.setSaldoPrevisto(0);
+		presupuesto.setSaldoReal(0);
 		presupuestoMensualService.save(presupuesto);
 		return "redirect:/presupuesto/listar";
 	}

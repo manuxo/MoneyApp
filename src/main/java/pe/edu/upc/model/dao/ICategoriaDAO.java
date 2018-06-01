@@ -7,5 +7,4 @@ import pe.edu.upc.model.entities.Categoria;
 
 @Repository
 public interface ICategoriaDAO extends JpaRepository<Categoria, Long>{
-
 }

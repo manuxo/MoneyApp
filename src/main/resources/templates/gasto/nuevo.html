@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body>
+
+	<div th:replace="layout/layout :: jumbotron"></div>
+	<nav th:replace="layout/layout :: nav"></nav>
+	<div class="container py-4 contenido-pagina">
+		<div class="row contenedor">
+			<div class="col-sm-12">
+				<h2>Nuevo Gasto</h2>
+				<form th:action="@{/gasto/nuevo/} + ${idPresupuesto}" th:object="${gastoViewModel}" method="post">
+				  <div class="form-group">
+				  	<label for="cateogira">Categoria: </label>
+				  	<select class="form-control" th:field="*{categoria}" id="categoria">
+					  <option th:each="categoria:${categorias}" th:value="${categoria.id}" th:text="${categoria.nombre}"></option>
+					</select>
+				  </div>
+				  <button type="submit" class="btn btn-warning">Registrar</button>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

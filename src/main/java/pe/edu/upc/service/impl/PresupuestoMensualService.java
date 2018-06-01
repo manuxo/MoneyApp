@@ -34,11 +34,6 @@ public class PresupuestoMensualService implements IPresupuestoMensualService{
 	@Transactional
 	public void save(PresupuestoMensual entity) {
 		// TODO Auto-generated method stub
-		entity.setCostoPrevistoTotal(0);
-		entity.setCostoRealTotal(0);
-		entity.setDiferenciaTotal(0);
-		entity.setSaldoPrevisto(0);
-		entity.setSaldoReal(0);
 		presupuestoMensualRepo.save(entity);
 	}
 

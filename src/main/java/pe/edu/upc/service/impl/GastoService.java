@@ -50,5 +50,12 @@ public class GastoService implements IGastoService{
 		// TODO Auto-generated method stub
 		gastoRepo.delete(entity);
 	}
+
+	@Override
+	@Transactional(readOnly=true)
+	public List<Gasto> findByIdPresupuesto(Long id) {
+		// TODO Auto-generated method stub
+		return gastoRepo.findByIdPresupuesto(id);
+	}
 	
 }
